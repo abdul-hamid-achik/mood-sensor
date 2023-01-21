@@ -1,0 +1,9 @@
+.idea
+.venv
+__pycache__
+.pytest_cache
+.DS_Store
+.task
+.secrets
+static/**/*
+.env
