@@ -39,6 +39,7 @@ urlpatterns = [
         name="docs",
     ),
     path("identity/", include("identity.urls")),
+    path("mood-sensor/", include("moods.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

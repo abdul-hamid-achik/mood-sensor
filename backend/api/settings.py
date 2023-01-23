@@ -68,7 +68,7 @@ INSTALLED_APPS = [
     "corsheaders",
 ]
 
-INSTALLED_APPS += ["identity"]
+INSTALLED_APPS += ["identity", "moods"]
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
