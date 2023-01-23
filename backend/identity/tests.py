@@ -1,7 +1,10 @@
 import pytest
 from django.contrib.auth import get_user_model
+from model_bakery import baker
 from rest_framework import status
 from rest_framework.reverse import reverse
+
+from moods.serializers import LocationSerializer
 
 User = get_user_model()
 
@@ -72,3 +75,21 @@ def test_user_endpoint(get_authenticated_client, user):
 def test_user_endpoint_failure(client, user):
     response = client.get(reverse("user-detail", args=[user.pk]))
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
+
+
+@pytest.mark.it("should return the closest happy location from the user's mood captures")
+def test_closest_happy_location(get_authenticated_client, user):
+    client = get_authenticated_client(user)
+    happy_mood = baker.make_recipe('moods.mood', name='happy')
+    location = baker.make_recipe('moods.location')
+    baker.make_recipe('moods.mood_capture', created_by=user, mood=happy_mood, location=location)
+
+    current_location = f'{location.coordinates.x},{location.coordinates.y}'
+
+    response = client.get(
+        reverse('user-closest-happy-location', kwargs={'pk': user.pk}),
+        {'current_location': current_location}
+    )
+
+    assert response.status_code == status.HTTP_200_OK
+    assert response.data == LocationSerializer(location).data

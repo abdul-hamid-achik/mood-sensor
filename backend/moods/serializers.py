@@ -12,7 +12,7 @@ class MoodSerializer(serializers.ModelSerializer):
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
-        fields = ('id', 'name', 'address', 'latitude', 'longitude', 'created_at', 'modified_at', 'created_by')
+        fields = ('id', 'name', 'address', 'coordinates', 'created_at', 'modified_at', 'created_by')
 
 
 class MoodCaptureSerializer(serializers.ModelSerializer):
@@ -22,3 +22,14 @@ class MoodCaptureSerializer(serializers.ModelSerializer):
     class Meta:
         model = MoodCapture
         fields = ('id', 'location', 'mood', 'captured_at', 'created_at', 'modified_at', 'created_by')
+
+
+class MoodFrequencySerializer(serializers.Serializer):
+    mood = serializers.StringRelatedField(source="mood__name")
+    count = serializers.IntegerField()
+
+    def create(self, validated_data):
+        raise NotImplementedError
+
+    def update(self, instance, validated_data):
+        raise NotImplementedError

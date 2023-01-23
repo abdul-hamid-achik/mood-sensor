@@ -56,12 +56,14 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    'django.contrib.gis',
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "django_extensions",
     "django_userforeignkey",
     "rest_framework",
     "rest_framework.schemas",
+    "rest_framework_gis",
     "health_check",
     "health_check.db",
     "rest_framework_simplejwt",
@@ -109,7 +111,7 @@ WSGI_APPLICATION = "api.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db(),
+    "default": env.db(engine='django.contrib.gis.db.backends.postgis'),
 }
 
 # Password validation
@@ -165,6 +167,10 @@ REST_FRAMEWORK = {  # Use Django's standard `django.contrib.auth` permissions,
     ],
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.openapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework_gis.filters.DistanceToPointFilter',
+    ],
     "PAGE_SIZE": 25,
 }
 APPEND_SLASH = True

@@ -1,3 +1,4 @@
+from django.contrib.gis.geos import Point
 from django.utils import timezone
 from faker import Faker
 from model_bakery.recipe import Recipe, foreign_key
@@ -11,13 +12,14 @@ mood = Recipe(
     name=lambda: faker.sentence(nb_words=1),
     description=lambda: faker.paragraph(nb_sentences=3)
 )
+
 location = Recipe(
     Location,
     name=lambda: faker.sentence(nb_words=1),
     address=faker.address(),
-    latitude=faker.latitude(),
-    longitude=faker.longitude()
+    coordinates=Point((faker.longitude(), faker.latitude()))
 )
+
 mood_capture = Recipe(
     MoodCapture,
     location=foreign_key(location),

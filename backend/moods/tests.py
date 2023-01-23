@@ -1,9 +1,12 @@
+from collections import OrderedDict
+
 import pytest
 from django.urls import reverse
 from model_bakery import baker
 from rest_framework import status
 
 from .models import Mood, Location, MoodCapture
+from .serializers import LocationSerializer
 
 
 @pytest.mark.describe('Mood')
@@ -156,3 +159,28 @@ def test_delete_mood_capture(get_authenticated_client, user):
     response = client.delete(reverse('mood-capture-detail', kwargs={'pk': mood_capture.pk}))
     assert response.status_code == status.HTTP_204_NO_CONTENT
     assert MoodCapture.objects.count() == 0
+
+
+@pytest.mark.describe('MoodCapture')
+@pytest.mark.it('should list captured mood frequencies for the authenticated user')
+@pytest.mark.usefixtures('mood_capture_frequency_data')
+def test_mood_captured_frequency(get_authenticated_client, user):
+    client = get_authenticated_client(user)
+    response = client.get(reverse('mood-capture-frequency'))
+    assert response.status_code == status.HTTP_200_OK
+    assert response.data == [
+        OrderedDict([('mood', 'happy'), ('count', 2)]),
+        OrderedDict([('mood', 'neutral'), ('count', 1)]),
+        OrderedDict([('mood', 'sad'), ('count', 1)])
+    ]
+
+
+@pytest.mark.describe('MoodCapture')
+@pytest.mark.it('should list the closest happy captured mood location for the authenticated user and a given point')
+@pytest.mark.usefixtures('mood_capture_frequency_data')
+def test_mood_captured_closest_happy_location(get_authenticated_client, user):
+    location = MoodCapture.objects.filter(mood__name='happy').first().location
+    client = get_authenticated_client(user)
+    response = client.get(reverse('mood-capture-closest-happy-location'), {'point': location.coordinates})
+    assert response.status_code == status.HTTP_200_OK
+    assert response.data == LocationSerializer(location).data

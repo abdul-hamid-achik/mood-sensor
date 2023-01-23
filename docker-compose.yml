@@ -53,7 +53,7 @@ services:
       - ./frontend:/frontend
 
   database:
-    image: postgres:latest
+    image: postgis/postgis:latest
     deploy:
       resources:
         limits:
