@@ -25,6 +25,8 @@ tasks:
     desc: runs database for development
     cmds:
       - docker compose up -d database
+      - sleep 10
+      - docker compose exec database pg_isready -U postgres
 
   compose.down:
     desc: Stops all services in docker-compose.yml
