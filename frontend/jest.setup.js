@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom/extend-expect'
 
 jest.mock('next/router', () => require('next-router-mock'));
-jest.mock('next-auth/react', () => {
-    return {
-        ...jest.requireActual('next-auth/react'),
-        useSession: () => ({user: null, status: 'loading'})
-    }
-});
+
+window.ResizeObserver = jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+}));

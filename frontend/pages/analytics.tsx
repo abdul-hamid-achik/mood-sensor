@@ -30,7 +30,9 @@ ChartJS.register(
 
 export default function Analytics() {
     const {data: session} = useSession();
-    const {data: frequencyMoodCaptures} = useQuery<MoodFrequency[]>(['frequencyMoodCaptures',], async () => {
+    const {data: frequencyMoodCaptures} = useQuery<MoodFrequency[]>(
+        ['frequencyMoodCaptures',],
+        async () => {
             const configuration = new Configuration({basePath: process.env.NEXT_PUBLIC_BACKEND_URL});
             const moodSenseApi = new MoodSenseApi(configuration);
             const {data: results} = await moodSenseApi.frequencyMoodCapture({
@@ -64,9 +66,8 @@ export default function Analytics() {
         <div className="flex flex-col items-center justify-center h-screen">
             {   // @ts-ignore
                 !!session?.access ?
-                    <Bar options={options} data={data}/> :
+                    <Bar options={options} data={data} data-testid="frequency-mood-bar-chart"/> :
                     <h1 className="text-2xl font-bold">You need to be logged in to view this page</h1>
-
             }
         </div>
     </>

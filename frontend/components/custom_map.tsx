@@ -89,6 +89,7 @@ export default function CustomMap({center = []}: Props) {
         style={{width: '100vw', height: '720px'}}
         onMove={evt => setViewState(evt.viewState)}
         attributionControl={false}
+        data-testid='custom-map'
         {...viewState}
     >
         <NavigationControl/>

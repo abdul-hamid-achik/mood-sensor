@@ -69,6 +69,7 @@ const Typeahead: React.FC<Props> = ({selected, setSelected, ...props}) => {
         }
     }
 
+
     return (
         <div className="relative z-10  p-2 mr-4" data-testid="typehead" ref={ref}>
             <form onSubmit={handleSubmit(onValid, onInvalid)} className="flex items-center">

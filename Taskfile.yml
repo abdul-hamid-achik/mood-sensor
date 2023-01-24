@@ -158,6 +158,11 @@ tasks:
     cmds:
       - npm run generate-api-client
 
+  stop:
+    desc: Stops all services in docker-compose.yml
+    cmds:
+      - docker compose stop
+
   routes:
     desc: Shows all routes
     dir: backend

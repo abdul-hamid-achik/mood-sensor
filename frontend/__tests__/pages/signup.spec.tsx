@@ -2,9 +2,9 @@ import {rest} from 'msw'
 import {setupServer} from 'msw/node'
 import {render, screen, waitFor} from '@testing-library/react'
 import UserEvent from '@testing-library/user-event'
-import SignUp from '../pages/signup'
+import SignUp from '../../pages/signup'
 import mockRouter from "next-router-mock";
-import {Wrapper} from "../tests.shared";
+import {Wrapper} from "../../tests.shared";
 
 process.env.NEXT_PUBLIC_BACKEND_URL = 'http://localhost:8080'
 

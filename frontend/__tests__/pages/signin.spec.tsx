@@ -1,9 +1,9 @@
 import {render, screen, waitFor} from "@testing-library/react";
 import {signIn} from 'next-auth/react';
 import UserEvent from "@testing-library/user-event";
-import SignIn from "../pages/signin";
+import SignIn from "../../pages/signin";
 import mockRouter from 'next-router-mock'
-import {Wrapper} from "../tests.shared";
+import {Wrapper} from "../../tests.shared";
 
 jest.mock('next-auth/react', () => {
     return {

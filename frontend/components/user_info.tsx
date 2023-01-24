@@ -1,8 +1,10 @@
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function UserInfo() {
     const { data: session } = useSession();
+    const queryClient = useQueryClient()
 
     return (
         <div className="absolute top-0 right-0 p-2 flex flex-row items-center justify-between">
@@ -14,11 +16,12 @@ export default function UserInfo() {
                     <button
                         className="text-sm text-blue-700 p-2 rounded-md ml-4"
                         data-testid="sign-out"
-                        onClick={() =>
+                        onClick={() => {
                             signOut({
                                 callbackUrl: `${window.location.origin}/`,
                             })
-                        }
+                            queryClient.clear()
+                        }}
                     >
                         Sign out
                     </button>

@@ -1,8 +1,8 @@
 import UserInfo from "./user_info";
 import Navbar from "./navbar";
 export default function Header() {
-    return <>
+    return <div data-testid="header">
         <Navbar/>
         <UserInfo/>
-    </>
+    </div>
 }
