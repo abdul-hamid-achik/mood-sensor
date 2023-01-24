@@ -36,11 +36,13 @@ NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=pk.eyJ1IjoiYWFjaGlrIiwiYSI6ImNsZDhsczRwaTAwOG0zc
 
 ### Running the app
 
-1. run `task install` to install dependencies
-2. run `task start` to run the app
-3. run `task stop` to stop the app
-4. run `task test` to run tests
-5. run `task clean` to clean up the app
+* run `task install` to install dependencies
+* run `task start` to run the app 
+* run `task migrate` to migrate the database
+* run `task seed` to create a first superuser
+* run `task stop` to stop the app if you want
+* run `task test` to run tests
+* run `task clean` to clean up the app
 
 for more info on the commands run `task --list`
 
