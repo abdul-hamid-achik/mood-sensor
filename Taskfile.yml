@@ -21,7 +21,7 @@ tasks:
     cmds:
       - docker compose up -d
 
-  compose.dev:
+  compose.db:
     desc: runs database for development
     cmds:
       - docker compose up -d database
@@ -98,6 +98,7 @@ tasks:
 
   test.backend:
     desc: Runs backend tests
+    deps: [ compose.db ]
     dir: backend
     cmds:
       - pdm test
@@ -174,3 +175,8 @@ tasks:
     cmds:
       - cd backend && pdm install --dev
       - cd frontend && npm install
+
+  archive:
+    desc: Archives the project
+    cmds:
+      - git archive --format=zip --output=abdulachik-stem-exam-archive.zip HEAD
