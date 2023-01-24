@@ -174,6 +174,7 @@ tasks:
     desc: Installs dependencies locally if you have the toolset setup
     cmds:
       - cd backend && pdm install --dev
+      - mkdir -p backend/static/
       - cd frontend && npm install
 
   archive:
