@@ -24,6 +24,99 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 /**
  * 
  * @export
+ * @interface ListLocations200Response
+ */
+export interface ListLocations200Response {
+    /**
+     * 
+     * @type {number}
+     * @memberof ListLocations200Response
+     */
+    'count'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListLocations200Response
+     */
+    'next'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListLocations200Response
+     */
+    'previous'?: string | null;
+    /**
+     * 
+     * @type {Array<Location>}
+     * @memberof ListLocations200Response
+     */
+    'results'?: Array<Location>;
+}
+/**
+ * 
+ * @export
+ * @interface ListMoodCaptures200Response
+ */
+export interface ListMoodCaptures200Response {
+    /**
+     * 
+     * @type {number}
+     * @memberof ListMoodCaptures200Response
+     */
+    'count'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListMoodCaptures200Response
+     */
+    'next'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListMoodCaptures200Response
+     */
+    'previous'?: string | null;
+    /**
+     * 
+     * @type {Array<MoodCapture>}
+     * @memberof ListMoodCaptures200Response
+     */
+    'results'?: Array<MoodCapture>;
+}
+/**
+ * 
+ * @export
+ * @interface ListMoods200Response
+ */
+export interface ListMoods200Response {
+    /**
+     * 
+     * @type {number}
+     * @memberof ListMoods200Response
+     */
+    'count'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListMoods200Response
+     */
+    'next'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListMoods200Response
+     */
+    'previous'?: string | null;
+    /**
+     * 
+     * @type {Array<Mood>}
+     * @memberof ListMoods200Response
+     */
+    'results'?: Array<Mood>;
+}
+/**
+ * 
+ * @export
  * @interface ListUsers200Response
  */
 export interface ListUsers200Response {
@@ -51,6 +144,179 @@ export interface ListUsers200Response {
      * @memberof ListUsers200Response
      */
     'results'?: Array<User>;
+}
+/**
+ * 
+ * @export
+ * @interface Location
+ */
+export interface Location {
+    /**
+     * 
+     * @type {number}
+     * @memberof Location
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Location
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Location
+     */
+    'address': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Location
+     */
+    'coordinates'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Location
+     */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Location
+     */
+    'modified_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Location
+     */
+    'created_by'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface Mood
+ */
+export interface Mood {
+    /**
+     * 
+     * @type {number}
+     * @memberof Mood
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Mood
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Mood
+     */
+    'description'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Mood
+     */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Mood
+     */
+    'modified_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Mood
+     */
+    'created_by'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface MoodCapture
+ */
+export interface MoodCapture {
+    /**
+     * 
+     * @type {number}
+     * @memberof MoodCapture
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof MoodCapture
+     */
+    'location': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof MoodCapture
+     */
+    'mood': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof MoodCapture
+     */
+    'captured_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MoodCapture
+     */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MoodCapture
+     */
+    'modified_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MoodCapture
+     */
+    'created_by'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface MoodFrequency
+ */
+export interface MoodFrequency {
+    /**
+     * 
+     * @type {string}
+     * @memberof MoodFrequency
+     */
+    'mood'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof MoodFrequency
+     */
+    'count': number;
+}
+/**
+ * 
+ * @export
+ * @interface Search
+ */
+export interface Search {
+    /**
+     * 
+     * @type {string}
+     * @memberof Search
+     */
+    'query': string;
 }
 /**
  * 
@@ -107,7 +373,7 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    'username'?: string;
+    'username': string;
     /**
      * 
      * @type {string}
@@ -122,6 +388,39 @@ export interface User {
  */
 export const IdentityApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        closestHappyLocationUser: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('closestHappyLocationUser', 'id', id)
+            const localVarPath = `/identity/users/{id}/closest_happy_location/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
          * @param {TokenObtainPair} [tokenObtainPair] 
@@ -224,10 +523,12 @@ export const IdentityApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @param {string} id A unique integer value identifying this user.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        destroyUser: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        destroyUser: async (id: string, dist?: number, point?: Array<number>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('destroyUser', 'id', id)
             const localVarPath = `/identity/users/{id}/`
@@ -243,6 +544,14 @@ export const IdentityApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -257,10 +566,12 @@ export const IdentityApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @param {number} [page] A page number within the paginated result set.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listUsers: async (page?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listUsers: async (page?: number, dist?: number, point?: Array<number>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/identity/users/`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -277,6 +588,14 @@ export const IdentityApiAxiosParamCreator = function (configuration?: Configurat
                 localVarQueryParameter['page'] = page;
             }
 
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -291,11 +610,13 @@ export const IdentityApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @param {string} id A unique integer value identifying this user.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {User} [user] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        partialUpdateUser: async (id: string, user?: User, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        partialUpdateUser: async (id: string, dist?: number, point?: Array<number>, user?: User, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('partialUpdateUser', 'id', id)
             const localVarPath = `/identity/users/{id}/`
@@ -310,6 +631,14 @@ export const IdentityApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
 
 
     
@@ -328,10 +657,12 @@ export const IdentityApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @param {string} id A unique integer value identifying this user.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveUser: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        retrieveUser: async (id: string, dist?: number, point?: Array<number>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('retrieveUser', 'id', id)
             const localVarPath = `/identity/users/{id}/`
@@ -347,6 +678,14 @@ export const IdentityApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -361,11 +700,13 @@ export const IdentityApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @param {string} id A unique integer value identifying this user.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {User} [user] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUser: async (id: string, user?: User, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateUser: async (id: string, dist?: number, point?: Array<number>, user?: User, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateUser', 'id', id)
             const localVarPath = `/identity/users/{id}/`
@@ -380,6 +721,14 @@ export const IdentityApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
 
 
     
@@ -405,6 +754,16 @@ export const IdentityApiAxiosParamCreator = function (configuration?: Configurat
 export const IdentityApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = IdentityApiAxiosParamCreator(configuration)
     return {
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async closestHappyLocationUser(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.closestHappyLocationUser(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
         /**
          * Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
          * @param {TokenObtainPair} [tokenObtainPair] 
@@ -438,53 +797,63 @@ export const IdentityApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} id A unique integer value identifying this user.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async destroyUser(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.destroyUser(id, options);
+        async destroyUser(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.destroyUser(id, dist, point, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @param {number} [page] A page number within the paginated result set.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listUsers(page?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListUsers200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listUsers(page, options);
+        async listUsers(page?: number, dist?: number, point?: Array<number>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListUsers200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listUsers(page, dist, point, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @param {string} id A unique integer value identifying this user.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {User} [user] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async partialUpdateUser(id: string, user?: User, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.partialUpdateUser(id, user, options);
+        async partialUpdateUser(id: string, dist?: number, point?: Array<number>, user?: User, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.partialUpdateUser(id, dist, point, user, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @param {string} id A unique integer value identifying this user.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveUser(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveUser(id, options);
+        async retrieveUser(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveUser(id, dist, point, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @param {string} id A unique integer value identifying this user.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {User} [user] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUser(id: string, user?: User, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateUser(id, user, options);
+        async updateUser(id: string, dist?: number, point?: Array<number>, user?: User, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateUser(id, dist, point, user, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -497,6 +866,15 @@ export const IdentityApiFp = function(configuration?: Configuration) {
 export const IdentityApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = IdentityApiFp(configuration)
     return {
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        closestHappyLocationUser(id: string, options?: any): AxiosPromise<Location> {
+            return localVarFp.closestHappyLocationUser(id, options).then((request) => request(axios, basePath));
+        },
         /**
          * Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
          * @param {TokenObtainPair} [tokenObtainPair] 
@@ -527,49 +905,59 @@ export const IdentityApiFactory = function (configuration?: Configuration, baseP
         /**
          * 
          * @param {string} id A unique integer value identifying this user.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        destroyUser(id: string, options?: any): AxiosPromise<void> {
-            return localVarFp.destroyUser(id, options).then((request) => request(axios, basePath));
+        destroyUser(id: string, dist?: number, point?: Array<number>, options?: any): AxiosPromise<void> {
+            return localVarFp.destroyUser(id, dist, point, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {number} [page] A page number within the paginated result set.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listUsers(page?: number, options?: any): AxiosPromise<ListUsers200Response> {
-            return localVarFp.listUsers(page, options).then((request) => request(axios, basePath));
+        listUsers(page?: number, dist?: number, point?: Array<number>, options?: any): AxiosPromise<ListUsers200Response> {
+            return localVarFp.listUsers(page, dist, point, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {string} id A unique integer value identifying this user.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {User} [user] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        partialUpdateUser(id: string, user?: User, options?: any): AxiosPromise<User> {
-            return localVarFp.partialUpdateUser(id, user, options).then((request) => request(axios, basePath));
+        partialUpdateUser(id: string, dist?: number, point?: Array<number>, user?: User, options?: any): AxiosPromise<User> {
+            return localVarFp.partialUpdateUser(id, dist, point, user, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {string} id A unique integer value identifying this user.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveUser(id: string, options?: any): AxiosPromise<User> {
-            return localVarFp.retrieveUser(id, options).then((request) => request(axios, basePath));
+        retrieveUser(id: string, dist?: number, point?: Array<number>, options?: any): AxiosPromise<User> {
+            return localVarFp.retrieveUser(id, dist, point, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {string} id A unique integer value identifying this user.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
          * @param {User} [user] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUser(id: string, user?: User, options?: any): AxiosPromise<User> {
-            return localVarFp.updateUser(id, user, options).then((request) => request(axios, basePath));
+        updateUser(id: string, dist?: number, point?: Array<number>, user?: User, options?: any): AxiosPromise<User> {
+            return localVarFp.updateUser(id, dist, point, user, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -581,6 +969,17 @@ export const IdentityApiFactory = function (configuration?: Configuration, baseP
  * @extends {BaseAPI}
  */
 export class IdentityApi extends BaseAPI {
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this user.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IdentityApi
+     */
+    public closestHappyLocationUser(id: string, options?: AxiosRequestConfig) {
+        return IdentityApiFp(this.configuration).closestHappyLocationUser(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
      * @param {TokenObtainPair} [tokenObtainPair] 
@@ -617,58 +1016,1889 @@ export class IdentityApi extends BaseAPI {
     /**
      * 
      * @param {string} id A unique integer value identifying this user.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof IdentityApi
      */
-    public destroyUser(id: string, options?: AxiosRequestConfig) {
-        return IdentityApiFp(this.configuration).destroyUser(id, options).then((request) => request(this.axios, this.basePath));
+    public destroyUser(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig) {
+        return IdentityApiFp(this.configuration).destroyUser(id, dist, point, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @param {number} [page] A page number within the paginated result set.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof IdentityApi
      */
-    public listUsers(page?: number, options?: AxiosRequestConfig) {
-        return IdentityApiFp(this.configuration).listUsers(page, options).then((request) => request(this.axios, this.basePath));
+    public listUsers(page?: number, dist?: number, point?: Array<number>, options?: AxiosRequestConfig) {
+        return IdentityApiFp(this.configuration).listUsers(page, dist, point, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @param {string} id A unique integer value identifying this user.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
      * @param {User} [user] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof IdentityApi
      */
-    public partialUpdateUser(id: string, user?: User, options?: AxiosRequestConfig) {
-        return IdentityApiFp(this.configuration).partialUpdateUser(id, user, options).then((request) => request(this.axios, this.basePath));
+    public partialUpdateUser(id: string, dist?: number, point?: Array<number>, user?: User, options?: AxiosRequestConfig) {
+        return IdentityApiFp(this.configuration).partialUpdateUser(id, dist, point, user, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @param {string} id A unique integer value identifying this user.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof IdentityApi
      */
-    public retrieveUser(id: string, options?: AxiosRequestConfig) {
-        return IdentityApiFp(this.configuration).retrieveUser(id, options).then((request) => request(this.axios, this.basePath));
+    public retrieveUser(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig) {
+        return IdentityApiFp(this.configuration).retrieveUser(id, dist, point, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @param {string} id A unique integer value identifying this user.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
      * @param {User} [user] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof IdentityApi
      */
-    public updateUser(id: string, user?: User, options?: AxiosRequestConfig) {
-        return IdentityApiFp(this.configuration).updateUser(id, user, options).then((request) => request(this.axios, this.basePath));
+    public updateUser(id: string, dist?: number, point?: Array<number>, user?: User, options?: AxiosRequestConfig) {
+        return IdentityApiFp(this.configuration).updateUser(id, dist, point, user, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * MoodSenseApi - axios parameter creator
+ * @export
+ */
+export const MoodSenseApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        closestHappyLocationMoodCapture: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/mood-sense/mood_captures/closest_happy_location/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createLocation: async (location?: Location, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/mood-sense/locations/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(location, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {Mood} [mood] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createMood: async (mood?: Mood, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/mood-sense/moods/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(mood, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {MoodCapture} [moodCapture] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createMoodCapture: async (moodCapture?: MoodCapture, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/mood-sense/mood_captures/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(moodCapture, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this location.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        destroyLocation: async (id: string, dist?: number, point?: Array<number>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('destroyLocation', 'id', id)
+            const localVarPath = `/mood-sense/locations/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        destroyMood: async (id: string, dist?: number, point?: Array<number>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('destroyMood', 'id', id)
+            const localVarPath = `/mood-sense/moods/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood capture.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        destroyMoodCapture: async (id: string, dist?: number, point?: Array<number>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('destroyMoodCapture', 'id', id)
+            const localVarPath = `/mood-sense/mood_captures/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        frequencyMoodCapture: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/mood-sense/mood_captures/frequency/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        geocodeLocation: async (location?: Location, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/mood-sense/locations/geocode/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(location, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listLocations: async (page?: number, dist?: number, point?: Array<number>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/mood-sense/locations/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listMoodCaptures: async (page?: number, dist?: number, point?: Array<number>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/mood-sense/mood_captures/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listMoods: async (page?: number, dist?: number, point?: Array<number>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/mood-sense/moods/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this location.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        partialUpdateLocation: async (id: string, dist?: number, point?: Array<number>, location?: Location, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('partialUpdateLocation', 'id', id)
+            const localVarPath = `/mood-sense/locations/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(location, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {Mood} [mood] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        partialUpdateMood: async (id: string, dist?: number, point?: Array<number>, mood?: Mood, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('partialUpdateMood', 'id', id)
+            const localVarPath = `/mood-sense/moods/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(mood, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood capture.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {MoodCapture} [moodCapture] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        partialUpdateMoodCapture: async (id: string, dist?: number, point?: Array<number>, moodCapture?: MoodCapture, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('partialUpdateMoodCapture', 'id', id)
+            const localVarPath = `/mood-sense/mood_captures/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(moodCapture, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this location.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveLocation: async (id: string, dist?: number, point?: Array<number>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('retrieveLocation', 'id', id)
+            const localVarPath = `/mood-sense/locations/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveMood: async (id: string, dist?: number, point?: Array<number>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('retrieveMood', 'id', id)
+            const localVarPath = `/mood-sense/moods/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood capture.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveMoodCapture: async (id: string, dist?: number, point?: Array<number>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('retrieveMoodCapture', 'id', id)
+            const localVarPath = `/mood-sense/mood_captures/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        reverseGeocodeLocation: async (location?: Location, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/mood-sense/locations/reverse_geocode/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(location, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {Search} [search] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchLocation: async (search?: Search, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/mood-sense/locations/search/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(search, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {Search} [search] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchMood: async (search?: Search, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/mood-sense/moods/search/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(search, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this location.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateLocation: async (id: string, dist?: number, point?: Array<number>, location?: Location, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updateLocation', 'id', id)
+            const localVarPath = `/mood-sense/locations/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(location, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {Mood} [mood] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateMood: async (id: string, dist?: number, point?: Array<number>, mood?: Mood, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updateMood', 'id', id)
+            const localVarPath = `/mood-sense/moods/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(mood, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood capture.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {MoodCapture} [moodCapture] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateMoodCapture: async (id: string, dist?: number, point?: Array<number>, moodCapture?: MoodCapture, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updateMoodCapture', 'id', id)
+            const localVarPath = `/mood-sense/mood_captures/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (dist !== undefined) {
+                localVarQueryParameter['dist'] = dist;
+            }
+
+            if (point) {
+                localVarQueryParameter['point'] = point.join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(moodCapture, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * MoodSenseApi - functional programming interface
+ * @export
+ */
+export const MoodSenseApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = MoodSenseApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async closestHappyLocationMoodCapture(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.closestHappyLocationMoodCapture(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createLocation(location?: Location, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createLocation(location, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {Mood} [mood] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createMood(mood?: Mood, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Mood>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createMood(mood, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {MoodCapture} [moodCapture] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createMoodCapture(moodCapture?: MoodCapture, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MoodCapture>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createMoodCapture(moodCapture, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this location.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async destroyLocation(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.destroyLocation(id, dist, point, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async destroyMood(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.destroyMood(id, dist, point, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood capture.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async destroyMoodCapture(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.destroyMoodCapture(id, dist, point, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async frequencyMoodCapture(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MoodFrequency>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.frequencyMoodCapture(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async geocodeLocation(location?: Location, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.geocodeLocation(location, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listLocations(page?: number, dist?: number, point?: Array<number>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListLocations200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listLocations(page, dist, point, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listMoodCaptures(page?: number, dist?: number, point?: Array<number>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListMoodCaptures200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listMoodCaptures(page, dist, point, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listMoods(page?: number, dist?: number, point?: Array<number>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListMoods200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listMoods(page, dist, point, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this location.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async partialUpdateLocation(id: string, dist?: number, point?: Array<number>, location?: Location, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.partialUpdateLocation(id, dist, point, location, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {Mood} [mood] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async partialUpdateMood(id: string, dist?: number, point?: Array<number>, mood?: Mood, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Mood>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.partialUpdateMood(id, dist, point, mood, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood capture.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {MoodCapture} [moodCapture] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async partialUpdateMoodCapture(id: string, dist?: number, point?: Array<number>, moodCapture?: MoodCapture, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MoodCapture>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.partialUpdateMoodCapture(id, dist, point, moodCapture, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this location.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveLocation(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveLocation(id, dist, point, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveMood(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Mood>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveMood(id, dist, point, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood capture.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveMoodCapture(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MoodCapture>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveMoodCapture(id, dist, point, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async reverseGeocodeLocation(location?: Location, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.reverseGeocodeLocation(location, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {Search} [search] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async searchLocation(search?: Search, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Search>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchLocation(search, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {Search} [search] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async searchMood(search?: Search, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Search>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchMood(search, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this location.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateLocation(id: string, dist?: number, point?: Array<number>, location?: Location, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateLocation(id, dist, point, location, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {Mood} [mood] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateMood(id: string, dist?: number, point?: Array<number>, mood?: Mood, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Mood>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateMood(id, dist, point, mood, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood capture.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {MoodCapture} [moodCapture] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateMoodCapture(id: string, dist?: number, point?: Array<number>, moodCapture?: MoodCapture, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MoodCapture>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateMoodCapture(id, dist, point, moodCapture, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * MoodSenseApi - factory interface
+ * @export
+ */
+export const MoodSenseApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = MoodSenseApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        closestHappyLocationMoodCapture(options?: any): AxiosPromise<Location> {
+            return localVarFp.closestHappyLocationMoodCapture(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createLocation(location?: Location, options?: any): AxiosPromise<Location> {
+            return localVarFp.createLocation(location, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {Mood} [mood] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createMood(mood?: Mood, options?: any): AxiosPromise<Mood> {
+            return localVarFp.createMood(mood, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {MoodCapture} [moodCapture] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createMoodCapture(moodCapture?: MoodCapture, options?: any): AxiosPromise<MoodCapture> {
+            return localVarFp.createMoodCapture(moodCapture, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this location.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        destroyLocation(id: string, dist?: number, point?: Array<number>, options?: any): AxiosPromise<void> {
+            return localVarFp.destroyLocation(id, dist, point, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        destroyMood(id: string, dist?: number, point?: Array<number>, options?: any): AxiosPromise<void> {
+            return localVarFp.destroyMood(id, dist, point, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood capture.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        destroyMoodCapture(id: string, dist?: number, point?: Array<number>, options?: any): AxiosPromise<void> {
+            return localVarFp.destroyMoodCapture(id, dist, point, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        frequencyMoodCapture(options?: any): AxiosPromise<MoodFrequency> {
+            return localVarFp.frequencyMoodCapture(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        geocodeLocation(location?: Location, options?: any): AxiosPromise<Location> {
+            return localVarFp.geocodeLocation(location, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listLocations(page?: number, dist?: number, point?: Array<number>, options?: any): AxiosPromise<ListLocations200Response> {
+            return localVarFp.listLocations(page, dist, point, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listMoodCaptures(page?: number, dist?: number, point?: Array<number>, options?: any): AxiosPromise<ListMoodCaptures200Response> {
+            return localVarFp.listMoodCaptures(page, dist, point, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {number} [page] A page number within the paginated result set.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listMoods(page?: number, dist?: number, point?: Array<number>, options?: any): AxiosPromise<ListMoods200Response> {
+            return localVarFp.listMoods(page, dist, point, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this location.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        partialUpdateLocation(id: string, dist?: number, point?: Array<number>, location?: Location, options?: any): AxiosPromise<Location> {
+            return localVarFp.partialUpdateLocation(id, dist, point, location, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {Mood} [mood] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        partialUpdateMood(id: string, dist?: number, point?: Array<number>, mood?: Mood, options?: any): AxiosPromise<Mood> {
+            return localVarFp.partialUpdateMood(id, dist, point, mood, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood capture.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {MoodCapture} [moodCapture] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        partialUpdateMoodCapture(id: string, dist?: number, point?: Array<number>, moodCapture?: MoodCapture, options?: any): AxiosPromise<MoodCapture> {
+            return localVarFp.partialUpdateMoodCapture(id, dist, point, moodCapture, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this location.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveLocation(id: string, dist?: number, point?: Array<number>, options?: any): AxiosPromise<Location> {
+            return localVarFp.retrieveLocation(id, dist, point, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveMood(id: string, dist?: number, point?: Array<number>, options?: any): AxiosPromise<Mood> {
+            return localVarFp.retrieveMood(id, dist, point, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood capture.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveMoodCapture(id: string, dist?: number, point?: Array<number>, options?: any): AxiosPromise<MoodCapture> {
+            return localVarFp.retrieveMoodCapture(id, dist, point, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        reverseGeocodeLocation(location?: Location, options?: any): AxiosPromise<Location> {
+            return localVarFp.reverseGeocodeLocation(location, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {Search} [search] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchLocation(search?: Search, options?: any): AxiosPromise<Search> {
+            return localVarFp.searchLocation(search, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {Search} [search] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchMood(search?: Search, options?: any): AxiosPromise<Search> {
+            return localVarFp.searchMood(search, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this location.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {Location} [location] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateLocation(id: string, dist?: number, point?: Array<number>, location?: Location, options?: any): AxiosPromise<Location> {
+            return localVarFp.updateLocation(id, dist, point, location, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {Mood} [mood] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateMood(id: string, dist?: number, point?: Array<number>, mood?: Mood, options?: any): AxiosPromise<Mood> {
+            return localVarFp.updateMood(id, dist, point, mood, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id A unique integer value identifying this mood capture.
+         * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+         * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+         * @param {MoodCapture} [moodCapture] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateMoodCapture(id: string, dist?: number, point?: Array<number>, moodCapture?: MoodCapture, options?: any): AxiosPromise<MoodCapture> {
+            return localVarFp.updateMoodCapture(id, dist, point, moodCapture, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * MoodSenseApi - object-oriented interface
+ * @export
+ * @class MoodSenseApi
+ * @extends {BaseAPI}
+ */
+export class MoodSenseApi extends BaseAPI {
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public closestHappyLocationMoodCapture(options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).closestHappyLocationMoodCapture(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {Location} [location] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public createLocation(location?: Location, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).createLocation(location, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {Mood} [mood] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public createMood(mood?: Mood, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).createMood(mood, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {MoodCapture} [moodCapture] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public createMoodCapture(moodCapture?: MoodCapture, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).createMoodCapture(moodCapture, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this location.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public destroyLocation(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).destroyLocation(id, dist, point, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this mood.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public destroyMood(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).destroyMood(id, dist, point, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this mood capture.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public destroyMoodCapture(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).destroyMoodCapture(id, dist, point, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public frequencyMoodCapture(options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).frequencyMoodCapture(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {Location} [location] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public geocodeLocation(location?: Location, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).geocodeLocation(location, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {number} [page] A page number within the paginated result set.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public listLocations(page?: number, dist?: number, point?: Array<number>, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).listLocations(page, dist, point, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {number} [page] A page number within the paginated result set.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public listMoodCaptures(page?: number, dist?: number, point?: Array<number>, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).listMoodCaptures(page, dist, point, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {number} [page] A page number within the paginated result set.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public listMoods(page?: number, dist?: number, point?: Array<number>, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).listMoods(page, dist, point, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this location.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {Location} [location] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public partialUpdateLocation(id: string, dist?: number, point?: Array<number>, location?: Location, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).partialUpdateLocation(id, dist, point, location, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this mood.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {Mood} [mood] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public partialUpdateMood(id: string, dist?: number, point?: Array<number>, mood?: Mood, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).partialUpdateMood(id, dist, point, mood, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this mood capture.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {MoodCapture} [moodCapture] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public partialUpdateMoodCapture(id: string, dist?: number, point?: Array<number>, moodCapture?: MoodCapture, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).partialUpdateMoodCapture(id, dist, point, moodCapture, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this location.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public retrieveLocation(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).retrieveLocation(id, dist, point, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this mood.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public retrieveMood(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).retrieveMood(id, dist, point, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this mood capture.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public retrieveMoodCapture(id: string, dist?: number, point?: Array<number>, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).retrieveMoodCapture(id, dist, point, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {Location} [location] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public reverseGeocodeLocation(location?: Location, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).reverseGeocodeLocation(location, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {Search} [search] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public searchLocation(search?: Search, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).searchLocation(search, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {Search} [search] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public searchMood(search?: Search, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).searchMood(search, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this location.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {Location} [location] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public updateLocation(id: string, dist?: number, point?: Array<number>, location?: Location, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).updateLocation(id, dist, point, location, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this mood.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {Mood} [mood] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public updateMood(id: string, dist?: number, point?: Array<number>, mood?: Mood, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).updateMood(id, dist, point, mood, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id A unique integer value identifying this mood capture.
+     * @param {number} [dist] Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed.
+     * @param {Array<number>} [point] Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+     * @param {MoodCapture} [moodCapture] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MoodSenseApi
+     */
+    public updateMoodCapture(id: string, dist?: number, point?: Array<number>, moodCapture?: MoodCapture, options?: AxiosRequestConfig) {
+        return MoodSenseApiFp(this.configuration).updateMoodCapture(id, dist, point, moodCapture, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

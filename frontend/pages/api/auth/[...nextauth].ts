@@ -19,7 +19,13 @@ interface Token {
 }
 
 async function refreshAccessToken(token: Token) {
+    if (!token.refresh) return token;
+
     const response = await identityApi.createTokenRefresh({"refresh": token.refresh});
+
+    if (!response.data || !response.data.access) return {
+        ...token,
+    }
     return {
         ...token,
         ...response?.data,
@@ -34,12 +40,12 @@ export const authOptions = {
     // https://next-auth.js.org/configuration/providers/oauth
     pages: {
         signup: "/signup",
-        signin: '/signin',
+        signin: "/signin",
     },
     providers: [
         CredentialsProvider({
             // The name to display on the sign-in form (e.g. 'Sign in with...')
-            name: "Project Template",
+            name: "Mood Sense",
             // The credentials is used to generate a suitable form on the sign-in page.
             // You can specify whatever fields you are expecting to be submitted.
             // e.g. domain, username, password, 2FA token, etc.
@@ -54,19 +60,23 @@ export const authOptions = {
 
             async authorize(credentials) {
                 try {
-                    const {data: token} = await identityApi.createTokenObtainPair(credentials);
-                    const {user_id}: any =
-                        jwtDecode((token as Token)?.access as string);
+                const {data: token} = await identityApi.createTokenObtainPair(credentials);
+                const accessToken = (token as Token)?.access as string;
+                const {user_id}: any =
+                    jwtDecode(accessToken);
 
-                    const {data: user} = await identityApi.retrieveUser(user_id);
-
-                    return {
-                        ...token,
-                        id: user_id,
-                        user
-                    };
+                const {data: user} = await identityApi.retrieveUser(user_id, 0, [], {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    }
+                });
+                return {
+                    ...token,
+                    id: user_id,
+                    user
+                };
                 } catch (error) {
-                    console.error(error.message);
+                    console.error(error);
                     return null;
                 }
             },
@@ -89,7 +99,7 @@ export const authOptions = {
             }
 
             // Return previous token if the access token has not expired
-            if (Date.now() < token.exp * 100) {
+            if (Date.now() < token.exp * 1000) {
                 return token;
             }
 
@@ -101,11 +111,12 @@ export const authOptions = {
                           token,
                           user
                       }: { session: CustomSession, user: User, token: Token }) {
-            console.log("session", session, token, user);
-            session.user = user;
+            // @ts-ignore
+            session.user = {...token.user, id: token.user_id};
             session.access = token.access;
             session.refresh = token.refresh;
             session.exp = token.exp;
+
             return session;
         },
     },

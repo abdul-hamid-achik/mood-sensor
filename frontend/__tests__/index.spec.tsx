@@ -1,14 +1,15 @@
 import {render, screen} from "@testing-library/react"
 import Home from "../pages"
+import {Wrapper} from "../tests.shared"
 
 describe("<Home />", () => {
-    it("renders title", () => {
-        render(<Home/>)
-        expect(screen.getByText("Django and Next.js Project Template")).toBeInTheDocument()
+    it("renders Moods typehead component", () => {
+        render(<Home/>, {wrapper: Wrapper})
+        expect(screen.getByText("Moods")).toBeInTheDocument()
     })
 
-    it('renders view on github button', () => {
-        render(<Home/>)
-        expect(screen.getByRole('link', {name: "View on GitHub"})).toBeInTheDocument()
+    it('renders Locations typehead component', () => {
+        render(<Home/>, {wrapper: Wrapper})
+        expect(screen.getByText("Locations")).toBeInTheDocument()
     })
 })

@@ -1,5 +1,6 @@
 # build stage
 FROM python:3.11-alpine AS builder
+RUN apk add --no-cache gdal gdal-dev geos build-base
 
 # install PDM
 RUN pip install -U pip setuptools wheel
@@ -15,7 +16,7 @@ RUN mkdir __pypackages__ && pdm install --prod --no-lock --no-editable
 
 # run stage
 FROM python:3.11-alpine AS runner
-
+RUN apk add --no-cache gdal geos
 ENV PYTHONPATH=/api/pkgs
 ENV PATH=/api/bin:$PATH
 

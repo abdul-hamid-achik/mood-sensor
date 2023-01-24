@@ -18,6 +18,7 @@ services:
     environment:
       DATABASE_URL: postgres://postgres:postgres@database:5432/postgres
       DEBUG: True
+      MAPBOX_ACCESS_TOKEN: ${MAPBOX_ACCESS_TOKEN:-<Secret Access Token>}
     ports:
       - 8080:8080
     volumes:

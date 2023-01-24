@@ -6,27 +6,37 @@ from api.shared import BaseMixin
 
 class Mood(BaseMixin):
     name = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
 
     class Meta:
-        ordering = ('created_at',)
+        ordering = ("created_at",)
+        constraints = [models.UniqueConstraint(fields=["name"], name="unique_mood_name")]
 
 
 class Location(BaseMixin):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, blank=True, null=True)
     address = models.TextField()
-    coordinates = PointField(default='POINT(0.0 0.0)')
+    coordinates = PointField(default="POINT(0.0 0.0)")
 
     class Meta:
-        ordering = ('created_at',)
+        ordering = ("created_at",)
+        constraints = [
+            models.UniqueConstraint(
+                fields=["address", "name", "coordinates"], name="unique_location_address_name_coordinates"
+            )
+        ]
 
 
 class MoodCaptureManager(models.Manager):
     def mood_frequency(self, user):
         print()
-        return self.filter(created_by=user).select_related('mood').values('mood__name').annotate(
-            count=models.Count('mood')
-        ).order_by('-count')
+        return (
+            self.filter(created_by=user)
+            .select_related("mood")
+            .values("mood__name")
+            .annotate(count=models.Count("mood"))
+            .order_by("-count")
+        )
 
 
 class MoodCapture(BaseMixin):
@@ -36,4 +46,9 @@ class MoodCapture(BaseMixin):
     objects = MoodCaptureManager()
 
     class Meta:
-        ordering = ('captured_at',)
+        ordering = ("captured_at",)
+        constraints = [
+            models.UniqueConstraint(
+                fields=["location", "mood", "captured_at"], name="unique_mood_capture_location_mood_captured_at"
+            )
+        ]

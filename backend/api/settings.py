@@ -11,8 +11,15 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+from glob import glob
 
 import environ
+
+try:
+    GDAL_LIBRARY_PATH = glob("/usr/lib/libgdal.so.*")[0]
+    GEOS_LIBRARY_PATH = glob("/usr/lib/libgeos_c.so.*")[0]
+except IndexError:
+    pass
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +38,7 @@ env = environ.Env(
     DATABASE_URL=(str, "postgres://postgres:postgres@localhost:5432/postgres"),
     BASE_URL=(str, "http://localhost:8000"),
     PUBLIC_URL=(str, "http://localhost:3000"),
+    MAPBOX_ACCESS_TOKEN=(str, "<Secret Access Token>"),
 )
 
 STATIC_HOST = env("STATIC_HOST")
@@ -56,7 +64,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    'django.contrib.gis',
+    "django.contrib.gis",
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "django_extensions",
@@ -111,7 +119,7 @@ WSGI_APPLICATION = "api.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db(engine='django.contrib.gis.db.backends.postgis'),
+    "default": env.db(engine="django.contrib.gis.db.backends.postgis"),
 }
 
 # Password validation
@@ -157,9 +165,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {  # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     "DEFAULT_PERMISSION_CLASSES": [],
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
+    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",),
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.OpenAPIRenderer",
         "rest_framework.renderers.JSONRenderer",
@@ -167,9 +173,9 @@ REST_FRAMEWORK = {  # Use Django's standard `django.contrib.auth` permissions,
     ],
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.openapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.rest_framework.DjangoFilterBackend',
-        'rest_framework_gis.filters.DistanceToPointFilter',
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework_gis.filters.DistanceToPointFilter",
     ],
     "PAGE_SIZE": 25,
 }
