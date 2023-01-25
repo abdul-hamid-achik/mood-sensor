@@ -1,4 +1,6 @@
 # Mood Sense
+[![Backend Compliance CI](https://github.com/sicksid/mood-sensor/actions/workflows/backend.yml/badge.svg)](https://github.com/sicksid/mood-sensor/actions/workflows/backend.yml)
+[![Frontend Compliance CI](https://github.com/sicksid/mood-sensor/actions/workflows/frontend.yml/badge.svg)](https://github.com/sicksid/mood-sensor/actions/workflows/frontend.yml)
 
 I managed to get most of the features from the exam done although the requirements were a bit vague,
 so I had to make some assumptions. I also had to make some compromises in order to get the app done in time.
