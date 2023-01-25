@@ -53,6 +53,4 @@ Implementation Aspects:
 • Proper setup and usage of package.json for publishing of the React component for in-browser usage
 • Finally, provide a README for your design, implementation and assumptions. 
 
-We request you to zip up your project and
-send it back to us (i.e. do not upload it to GitHub or any other public repository)Once we received your project, we
-will review it with you!
+We request you to zip up your project and send it back to us
