@@ -10,19 +10,19 @@ faker = Faker()
 mood = Recipe(
     Mood,
     name=lambda: faker.sentence(nb_words=1),
-    description=lambda: faker.paragraph(nb_sentences=3)
+    description=lambda: faker.paragraph(nb_sentences=3),
 )
 
 location = Recipe(
     Location,
     name=lambda: faker.sentence(nb_words=1),
     address=faker.address(),
-    coordinates=Point((faker.longitude(), faker.latitude()))
+    coordinates=Point((faker.longitude(), faker.latitude())),
 )
 
 mood_capture = Recipe(
     MoodCapture,
     location=foreign_key(location),
     mood=foreign_key(mood),
-    captured_at=faker.past_datetime(tzinfo=timezone.get_current_timezone())
+    captured_at=faker.past_datetime(tzinfo=timezone.get_current_timezone()),
 )

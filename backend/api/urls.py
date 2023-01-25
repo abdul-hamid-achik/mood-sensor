@@ -25,9 +25,7 @@ urlpatterns = [
     path("health/", include("health_check.urls")),
     path(
         "schema/",
-        get_schema_view(
-            title="API", urlconf="api.urls", public=True
-        ),
+        get_schema_view(title="API", urlconf="api.urls", public=True),
         name="openapi-schema",
     ),
     path(

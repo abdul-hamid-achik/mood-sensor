@@ -10,7 +10,9 @@ class Mood(BaseMixin):
 
     class Meta:
         ordering = ("created_at",)
-        constraints = [models.UniqueConstraint(fields=["name"], name="unique_mood_name")]
+        constraints = [
+            models.UniqueConstraint(fields=["name"], name="unique_mood_name")
+        ]
 
 
 class Location(BaseMixin):
@@ -22,7 +24,8 @@ class Location(BaseMixin):
         ordering = ("created_at",)
         constraints = [
             models.UniqueConstraint(
-                fields=["address", "name", "coordinates"], name="unique_location_address_name_coordinates"
+                fields=["address", "name", "coordinates"],
+                name="unique_location_address_name_coordinates",
             )
         ]
 
@@ -49,6 +52,7 @@ class MoodCapture(BaseMixin):
         ordering = ("captured_at",)
         constraints = [
             models.UniqueConstraint(
-                fields=["location", "mood", "captured_at"], name="unique_mood_capture_location_mood_captured_at"
+                fields=["location", "mood", "captured_at"],
+                name="unique_mood_capture_location_mood_captured_at",
             )
         ]

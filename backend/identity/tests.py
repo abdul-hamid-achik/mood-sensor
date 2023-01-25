@@ -77,18 +77,22 @@ def test_user_endpoint_failure(client, user):
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
 
-@pytest.mark.it("should return the closest happy location from the user's mood captures")
+@pytest.mark.it(
+    "should return the closest happy location from the user's mood captures"
+)
 def test_closest_happy_location(get_authenticated_client, user):
     client = get_authenticated_client(user)
-    happy_mood = baker.make_recipe('moods.mood', name='happy')
-    location = baker.make_recipe('moods.location')
-    baker.make_recipe('moods.mood_capture', created_by=user, mood=happy_mood, location=location)
+    happy_mood = baker.make_recipe("moods.mood", name="happy")
+    location = baker.make_recipe("moods.location")
+    baker.make_recipe(
+        "moods.mood_capture", created_by=user, mood=happy_mood, location=location
+    )
 
-    current_location = f'{location.coordinates.x},{location.coordinates.y}'
+    current_location = f"{location.coordinates.x},{location.coordinates.y}"
 
     response = client.get(
-        reverse('user-closest-happy-location', kwargs={'pk': user.pk}),
-        {'current_location': current_location}
+        reverse("user-closest-happy-location", kwargs={"pk": user.pk}),
+        {"current_location": current_location},
     )
 
     assert response.status_code == status.HTTP_200_OK
