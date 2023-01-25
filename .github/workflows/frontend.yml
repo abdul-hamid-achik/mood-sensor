@@ -35,6 +35,8 @@ jobs:
           env: 'dev'
 
       - name: Run Tests
+        env:
+          NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN: ${{ secrets.MAPBOX_ACCESS_TOKEN }}
         run: |
           npm ci
           npm test
