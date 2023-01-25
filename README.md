@@ -16,22 +16,22 @@ i however thing the tests i wrote are a good representation of my testing skills
 <rootDir>/.env
 
 ```dotenv
-NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=pk.eyJ1IjoiYWFjaGlrIiwiYSI6ImNsZDhsczRwaTAwOG0zcXJveWFwbmI2Ym4ifQ.j8K1SPJClEz_K3U8I0D1XA
-MAPBOX_ACCESS_TOKEN=sk.eyJ1IjoiYWFjaGlrIiwiYSI6ImNsZDhscm16ejAwN3Izb21wZWZjMndqcjAifQ.x3BEP3LZVpFkcwkADXMn_Q
+NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=<your mapbox access token>
+MAPBOX_ACCESS_TOKEN=<your mapbox access token>
 ```
 
 
 <rootDir>/backend/.env
 
 ```dotenv
-MAPBOX_ACCESS_TOKEN=sk.eyJ1IjoiYWFjaGlrIiwiYSI6ImNsZDhscm16ejAwN3Izb21wZWZjMndqcjAifQ.x3BEP3LZVpFkcwkADXMn_Q
+MAPBOX_ACCESS_TOKEN=<your mapbox access token>
 ```
 
 
 <rootDir>/frontend/.env.local
 
 ```dotenv
-NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=pk.eyJ1IjoiYWFjaGlrIiwiYSI6ImNsZDhsczRwaTAwOG0zcXJveWFwbmI2Ym4ifQ.j8K1SPJClEz_K3U8I0D1XA
+NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=<your mapbox access token>
 ```
 
 ### Running the app
